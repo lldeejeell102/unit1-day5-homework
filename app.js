@@ -22,7 +22,7 @@ const player = {
     wonGame: false
 }
 
-const tool = tools[player.tool]
+let tool = tools[player.tool]
 function mowLawn() {
     alert(`You mowed a lawn with ${tool.name} and make ${tool.generates} dollars`)
     player.money += tool.generates
@@ -38,7 +38,8 @@ function upgradeTool() {
             // subtracts money and points player.tool to next object
             player.money -= nextTool.price;
             player.tool++;
-            alert("You've upgraded your tool")
+            tool = tools[player.tool]
+            alert(`"You've upgraded your tool"`)
         } else {
             alert("Not enough money to upgrade")
         }
