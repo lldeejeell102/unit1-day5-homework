@@ -1,4 +1,5 @@
 console.log("hello world")
+// Following PoolCleanerJS - https://www.youtube.com/watch?v=fsdP-bucm0s&themeRefresh=1
 
 // You are a landscaper
 // you start out with your teeth to make $1/day
@@ -14,13 +15,13 @@ const tools = [
     {name: "push lawnmower", generates: 50, price: 25},
     {name: "battery lawnmower", generates: 100, price: 250},
     {name: "team of starving students", generates: 250, price: 500}
-]
+];
 
 const player = {
     money: 0,
     tool: 0,
     wonGame: false
-}
+};
 
 let tool = tools[player.tool]
 function mowLawn() {
@@ -28,6 +29,7 @@ function mowLawn() {
     player.money += tool.generates
 }
 
+// code runs but upgradeTool does not assign tool to be the next player.tool object
 function upgradeTool() {
     // makes sure there is no other tools to upgrade
     if (player.tool + 1 < tools.length) {
@@ -37,8 +39,7 @@ function upgradeTool() {
         if (nextTool.price <= player.money) {
             // subtracts money and points player.tool to next object
             player.money -= nextTool.price;
-            player.tool++;
-            tool = tools[player.tool]
+            player.tool += 1;
             alert(`"You've upgraded your tool"`)
         } else {
             alert("Not enough money to upgrade")
