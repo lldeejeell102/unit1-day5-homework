@@ -34,18 +34,19 @@ function upgradeTool() {
     // makes sure there is no other tools to upgrade
     if (player.tool + 1 < tools.length) {
         // upgrades to next tool
-        const nextTool = tools[player.tool + 1];
+        let nextTool = tools[player.tool + 1];
         // checks to see if we have enough money
         if (nextTool.price <= player.money) {
             // subtracts money and points player.tool to next object
             player.money -= nextTool.price;
-            player.tool += 1;
-            alert(`"You've upgraded your tool"`)
+            player.tool ++;
+            tool = nextTool;
+            alert(`You've upgraded your tool`)
         } else {
-            alert("Not enough money to upgrade")
+            alert(`Not enough money to upgrade`)
         }
     } else {
-        alert("There are no more tools to upgrade");
+        alert(`There are no more tools to upgrade`);
     }
 }
 
@@ -66,7 +67,9 @@ while (!player.wonGame) {
     } 
 
     if (response === 'u'){
+        
         upgradeTool()
+        
     }
 
     if (response !== 'm' && response !== 'u'){
